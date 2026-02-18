@@ -15,7 +15,7 @@
 
 
 #define DEFAULT 0
-#define SYM 1
+#define ALT 1
 #define UPPER 2
 #define MEDIA 3
 
