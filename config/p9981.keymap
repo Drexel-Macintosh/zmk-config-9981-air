@@ -22,17 +22,89 @@
 #define SL_MO(layer) &sl_mo layer layer //tap -> sticky layer, hold -> momentary layer
 
 
+
+// Standard Behavior Configurations:
+
+&mt {
+    flavor = "tap-preferred";
+    tapping-term-ms = <200>;
+    };
+
+&sk{
+    release-after-ms = <2500>;
+    };
+
 &sl {
-    release-after-ms = <3000>;
+    release-after-ms = <2500>;
     };
 
 / {
+
+
     behaviors {
+// Tap Dance Behaviors
+
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <400>;
+            tapping-term-ms = <300>;
             bindings = <&mkp LCLK>, <&bt BT_CLR>;
+        };
+
+        ALTL: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&sl ALT>, <&to ALT>;
+        };
+
+        SHFT: tap_dance_2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&sk LSHFT>, <&kp CLCK>;
+        };
+
+        MED: tap_dance_3 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&to 0>, <&to MEDIA>;
+        };
+
+        MAN: tap_dance_4 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&to 0>, <&to UPPER>;
+        };
+
+        EALT: tap_dance_5 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&sk RALT>, <&kp RALT>;
+        };
+
+        ECTRL: tap_dance_6 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&sk LCTRL>, <&kp LC(SPACE)>;
+        };
+
+        EMU: tap_dance_7 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&to 0>, <&to MEDIA>;
+        };
+
+        CON: tap_dance_8 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&to 0>, <&to 0>;
         };
     };
 
