@@ -13,21 +13,30 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/rgb.h>
 
-
+/* Layer indices for readability */
 #define DEFAULT 0
 #define SYM 1
 #define UPPER 2
 #define MEDIA 3
 
-#define SL_MO(layer) &sl_mo layer layer //tap -> sticky layer, hold -> momentary layer
+/* Convenience macro:
+ * SL_MO(layer) → tap = sticky layer, hold = momentary layer
+ */
+#define SL_MO(layer) &sl_mo layer layer
 
-
+/* Sticky-layer behavior configuration */
 &sl {
-    release-after-ms = <3000>;
-    };
+    release-after-ms = <3000>;   // Sticky layer releases after 3 seconds
+};
 
-/ {
+/* -------------------------------------------------------------------------- */
+/*                               BEHAVIOR DEFINITIONS                         */
+/* -------------------------------------------------------------------------- */
+
+ / {
     behaviors {
+
+        /* Tap Dance: Left click on tap, Bluetooth clear on double tap */
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -37,67 +46,82 @@
     };
 
     behaviors {
+
+        /* Tap Dance: Bootloader on tap, toggle USB/BLE output on double tap */
         td_boot_out: td_boot_out {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <400>;            
+            tapping-term-ms = <400>;
             bindings = <&bootloader>, <&out OUT_TOG>;
-            // Tap → &bootloader
-            // Double tap → &out OUT_TOG
+            // Tap → enter bootloader
+            // Double tap → toggle output (USB/BLE)
         };
     };
 
-        behaviors {
+    behaviors {
+
+        /* Tap Dance: Semicolon on tap, switch to SYM layer on double tap */
         tdc_to_SYM: td_comma_to_layer {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&kp SEMI>, <&to SYM>;
-            // Tap → &kp SEMI
-            // Double tap → &to SYM
+            // Tap → ;
+            // Double tap → switch to SYM layer
         };
     };
 
     behaviors {
+
+        /* Tap Dance: Mute on tap, switch to MEDIA layer on double tap */
         tdc_to_MEDIA: td_mute_to_layer {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&kp C_MUTE>, <&to MEDIA>;
-            // Tap → &kp C_MUTE
-            // Double tap → &to MEDIA
+            // Tap → mute
+            // Double tap → switch to MEDIA layer
         };
     };
 
     behaviors {
+
+        /* Tap Dance: Space on tap, Bluetooth clear on double tap */
         td_kp_bleclear: td_kp_bleclear {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <400>;            
+            tapping-term-ms = <400>;
             bindings = <&kp SPACE>, <&bt BT_CLR>;
-            // Tap → &kp space
-            // Double tap → &bt BT_CLEAR
+            // Tap → space
+            // Double tap → clear Bluetooth bonds
         };
     };
 
     behaviors {
+
+        /* Generic hold‑tap for homerow mods */
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <400>;
-            bindings = <&kp &kp>;
+            bindings = <&kp &kp>;   // Placeholder: actual mod + key provided in keymap
         };
     };
-    
+
     behaviors {
-    sl_mo: behavior_sl_mo {
-        compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <2>;
-        flavor = "hold-preferred";      
-        tapping-term-ms = <450>;       
-        bindings = <&mo &sl>;       
-            // Tap → &sticky layer
-            // Double tap → &momentary layer  
+
+        /* Sticky-layer + momentary-layer hybrid:
+         * tap = sticky layer
+         * hold = momentary layer
+         */
+        sl_mo: behavior_sl_mo {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";   // Hold wins if ambiguous
+            tapping-term-ms = <450>;
+            bindings = <&mo &sl>;
+            // Tap → sticky layer
+            // Hold → momentary layer
         };
     };
 
