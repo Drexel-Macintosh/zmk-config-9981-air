@@ -124,7 +124,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
-            bindings = <&kp SEMI>, <&to SYM>;
+            bindings = <&kp SEMI>, <&to ALT>;
             // Tap → &kp SEMI
             // Double tap → &to SYM
         };
@@ -206,7 +206,7 @@
         };
 
 
-        sym_layer {
+        alt_layer {
 
             bindings = <        
     &kp HASH     &kp N1     &kp N2      &kp N3    &mt LBKT LPAR &mt RBKT RPAR     &kp UNDER        &kp MINUS        &kp PLUS         &kp AT
