@@ -19,8 +19,6 @@
 #define UPPER 2
 #define MEDIA 3
 
-#define SL_MO(layer) &sl_mo layer layer //tap -> sticky layer, hold -> momentary layer
-
 // Standard Behavior Configurations:
 
 &mt {
@@ -78,14 +76,6 @@
             // Double tap → &to MEDIA
         };
 
-        td_kp_bleclear: td_kp_bleclear {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <400>;
-            bindings = <&kp SPACE>, <&bt BT_CLR>;
-            // Tap → &kp SPACE
-            // Double tap → &bt BT_CLR
-        };
 
         SHFT: tap_dance_shft {
             compatible = "zmk,behavior-tap-dance";
@@ -102,12 +92,6 @@
             bindings = <&sk RALT>, <&kp RALT>;
         };
 
-        ECTRL: tap_dance_ectrl {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings = <&sk LCTRL>, <&kp LC(SPACE)>;
-        };
 
 // Macro Behaviors
 
@@ -229,15 +213,6 @@
             bindings = <&mkp>, <&mkp>;
         };
 
-    sl_mo: behavior_sl_mo {
-        compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <2>;
-        flavor = "hold-preferred";
-        tapping-term-ms = <450>;
-        bindings = <&mo>, <&sl>;
-            // Tap → sticky layer
-            // Hold → momentary layer
-        };
 
 //End Behaviors here
     };
@@ -266,7 +241,7 @@
     &mtt LS(A) A    &mtt LS(S) S      &mtt LS(D) D    &mtt LS(F) F     &mtt LS(G) G    &mtt LS(H) H    &mtt LS(J) J    &mtt LS(K) K    &mtt LS(L) L        &kp BSPC
     &SHFT           &mtt LS(Z) Z      &mtt LS(X) X    &mtt LS(C) C     &mtt LS(V) V    &mtt LS(B) B    &mtt LS(N) N    &mtt LS(M) M    &mtt K_STOP LG(N)   &kp ENTER
 
-                    &ECTRL                             &kp LALT                          &kp SPACE                       SL_MO(SYM)                           SL_MO(UPPER)
+    		         &SHFT				 &mtt LG(A) K_PWR	      &kp SPACE			&EALT		 &sk LCTRL
 
             >;
         };
@@ -294,7 +269,7 @@
     &mtt EQUAL STAR     &mtt LEFT N4       &mtt DOWN N5       &mtt RIGHT N6      &mtt BSLH SLASH   &mtt PIPE COLON    &mtt AMPS SEMI     &mtt APOS APOS     &mtt DQT DQT       &mtt DEL BSPC
     &SHFT               &mtt END N7        &mtt DOWN N8       &mtt PG_DN N9      &mtt LBRC QMARK   &mtt RBRC EXCL     &mtt GRAVE COMMA   &mtt DOT DOT       &mtt PSCRN DLLR    &kp ENTER
 
-                        &ECTRL                                 &hm2 EP_TOG N0                        &kp SPACE                            &to DEFAULT                             SL_MO(UPPER)
+    		         &SHFT				 &hm2 EP_TOG N0	      &kp SPACE			&EALT		 &sk LCTRL
 
             >;
         };
@@ -321,7 +296,7 @@
     &kp LEFT        &kp DOWN           &kp RIGHT          &none              &kp BSLH           &kp AMPS           &kp LBRC           &kp RBRC           &kp CARET          &kp BSPC
     &SHFT           &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &td_boot_out       &kp ENTER
 
-                    &ECTRL                                 &kp LALT                              &td_kp_bleclear                      &to DEFAULT                             &to DEFAULT
+    		         &SHFT				 &hm2 EP_TOG N0	      &kp SPACE			&EALT		 &sk LCTRL
 
             >;
         };
@@ -338,7 +313,7 @@
     &bt2            &bt3               &none              &none              &none              &none              &none              &none              &none              &none
     &to DEFAULT     &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &bootloader        &none
 
-                    &to DEFAULT                            &none                                 &out OUT_TOG                         &to DEFAULT                             &to DEFAULT
+    		         &to 0				 &none	              &out OUT_TOG			&none		 &none
 
             >;
         };
