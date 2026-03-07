@@ -26,7 +26,7 @@
     };
 
 &sl {
-    release-after-ms = <3000>;
+    release-after-ms = <2500>;
     };
 
 / {
@@ -85,6 +85,34 @@
             #binding-cells = <0>;
             tapping-term-ms = <300>;
             bindings = <&sk RALT>, <&kp RALT>;
+        };
+
+        ALTL: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&sl SYM>, <&to SYM>;
+        };
+
+        MAN: tap_dance_4 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&to 0>, <&to UPPER>;
+        };
+
+        EMU: tap_dance_7 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&to 0>, <&to MEDIA>;
+        };
+
+        CON: tap_dance_8 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&to 0>, <&to 0>;
         };
 
 
@@ -222,7 +250,7 @@
 
     &mtt LS(Q) Q    &mtt LS(W) W      &mtt LS(E) E    &mtt LS(R) R     &mtt LS(T) T    &mtt LS(Y) Y    &mtt LS(U) U    &mtt LS(I) I    &mtt LS(O) O        &mtt LS(P) P
     &mtt LS(A) A    &mtt LS(S) S      &mtt LS(D) D    &mtt LS(F) F     &mtt LS(G) G    &mtt LS(H) H    &mtt LS(J) J    &mtt LS(K) K    &mtt LS(L) L        &kp BSPC
-    &SHFT           &mtt LS(Z) Z      &mtt LS(X) X    &mtt LS(C) C     &mtt LS(V) V    &mtt LS(B) B    &mtt LS(N) N    &mtt LS(M) M    &mtt K_STOP LG(N)   &kp ENTER
+    &ALTL           &mtt LS(Z) Z      &mtt LS(X) X    &mtt LS(C) C     &mtt LS(V) V    &mtt LS(B) B    &mtt LS(N) N    &mtt LS(M) M    &mtt K_STOP LG(N)   &kp ENTER
 
     		         &SHFT				 &mtt LG(A) K_PWR	      &kp SPACE			&EALT		 &sk LCTRL
 
@@ -238,7 +266,7 @@
 
     &mtt TILDE HASH     &mtt HOME N1       &mtt UP N2         &mtt PG_UP N3      &mtt LBKT LPAR    &mtt RBKT RPAR     &mtt LT UNDER      &mtt GT MINUS      &mtt CARET PLUS    &mtt PERCENT AT
     &mtt EQUAL STAR     &mtt LEFT N4       &mtt DOWN N5       &mtt RIGHT N6      &mtt BSLH SLASH   &mtt PIPE COLON    &mtt AMPS SEMI     &mtt APOS APOS     &mtt DQT DQT       &mtt DEL BSPC
-    &SHFT               &mtt END N7        &mtt DOWN N8       &mtt PG_DN N9      &mtt LBRC QMARK   &mtt RBRC EXCL     &mtt GRAVE COMMA   &mtt DOT DOT       &mtt PSCRN DLLR    &kp ENTER
+    &MAN                &mtt END N7        &mtt DOWN N8       &mtt PG_DN N9      &mtt LBRC QMARK   &mtt RBRC EXCL     &mtt GRAVE COMMA   &mtt DOT DOT       &mtt PSCRN DLLR    &kp ENTER
 
     		         &SHFT				 &hm2 EP_TOG N0	      &kp SPACE			&EALT		 &sk LCTRL
 
@@ -253,7 +281,7 @@
 
     &none           &kp UP             &none              &sys_reset         &ext_power EP_TOG  &none              &kp LT             &kp GT             &kp PIPE           &kp KP_EQUAL
     &kp LEFT        &kp DOWN           &kp RIGHT          &none              &kp BSLH           &kp AMPS           &kp LBRC           &kp RBRC           &kp CARET          &kp BSPC
-    &SHFT           &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &td_boot_out       &kp ENTER
+    &EMU            &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &td_boot_out       &kp ENTER
 
     		         &SHFT				 &hm2 EP_TOG N0	      &kp SPACE			&EALT		 &sk LCTRL
 
@@ -268,7 +296,7 @@
 
     &bt0            &bt1               &bt BT_CLR         &sys_reset         &ext_power EP_TOG  &none              &none              &none              &none              &none
     &bt2            &bt3               &none              &none              &none              &none              &none              &none              &none              &none
-    &to DEFAULT     &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &bootloader        &none
+    &CON            &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &bootloader        &none
 
     		         &to 0				 &none	              &out OUT_TOG			&none		 &none
 
