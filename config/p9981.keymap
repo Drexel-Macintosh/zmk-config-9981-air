@@ -44,32 +44,7 @@
             bindings = <&mkp LCLK>, <&bt BT_CLR>;
         };
 
-        td_boot_out: td_boot_out {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <400>;
-            bindings = <&bootloader>, <&out OUT_TOG>;
-            // Tap RGT &bootloader
-            // Double tap RGT &out OUT_TOG
-        };
 
-        tdc_to_SYM: td_comma_to_layer {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <400>;
-            bindings = <&kp SEMI>, <&to SYM>;
-            // Tap RGT &kp SEMI
-            // Double tap RGT &to SYM
-        };
-
-        tdc_to_MEDIA: td_mute_to_layer {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <400>;
-            bindings = <&kp C_MUTE>, <&to MEDIA>;
-            // Tap RGT &kp C_MUTE
-            // Double tap RGT &to MEDIA
-        };
 
 
         SHFT: tap_dance_shft {
@@ -277,13 +252,11 @@
 
             bindings = <
 
-    
+    &kp Q		&kp W		&kp E		&kp R			&kp T			&kp Y		&kp U		&kp I		&kp O		&kp P
+    &kp A		&kp S		&kp D		&kp F			&kp G			&kp H		&kp J		&kp K		&kp L		&kp BSPC
+    &EMU		&kp Z		&kp X		&kp C			&kp V			&kp B		&kp N		&kp M		&kp DLLR	&kp ENTER
 
-    &none           &kp UP             &none              &sys_reset         &ext_power EP_TOG  &none              &kp LT             &kp GT             &kp PIPE           &kp KP_EQUAL
-    &kp LEFT        &kp DOWN           &kp RIGHT          &none              &kp BSLH           &kp AMPS           &kp LBRC           &kp RBRC           &kp CARET          &kp BSPC
-    &EMU            &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &td_boot_out       &kp ENTER
-
-    		         &SHFT				 &hm2 EP_TOG N0	      &kp SPACE			&EALT		 &sk LCTRL
+    		&SHFT				 &hm2 EP_TOG N0			&kp SPACE				&EALT				&sk LCTRL
 
             >;
         };
