@@ -1,8 +1,4 @@
-/*
- * Copyright (c) 2023 ZitaoTech
- * "BlueBerry" Android Layout by Drexel Macintosh    
- * SPDX-License-Identifier: MIT
- */
+
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -298,7 +294,7 @@
 
     
 
-    &bt0            &bt1               &BT_CLR            &sys_reset         &ext_power EP_TOG  &none              &none              &none              &none              &none
+    &bt0            &bt1               &bt BT_CLR         &sys_reset         &ext_power EP_TOG  &none              &none              &none              &none              &none
     &bt2            &bt3               &none              &none              &none              &none              &none              &none              &none              &none
     &CON            &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &bootloader        &none
 
