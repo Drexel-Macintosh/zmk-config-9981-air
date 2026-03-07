@@ -54,8 +54,8 @@
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&bootloader>, <&out OUT_TOG>;
-            // Tap → &bootloader
-            // Double tap → &out OUT_TOG
+            // Tap RGT &bootloader
+            // Double tap RGT &out OUT_TOG
         };
 
         tdc_to_SYM: td_comma_to_layer {
@@ -63,8 +63,8 @@
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&kp SEMI>, <&to SYM>;
-            // Tap → &kp SEMI
-            // Double tap → &to SYM
+            // Tap RGT &kp SEMI
+            // Double tap RGT &to SYM
         };
 
         tdc_to_MEDIA: td_mute_to_layer {
@@ -72,8 +72,8 @@
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&kp C_MUTE>, <&to MEDIA>;
-            // Tap → &kp C_MUTE
-            // Double tap → &to MEDIA
+            // Tap RGT &kp C_MUTE
+            // Double tap RGT &to MEDIA
         };
 
 
@@ -82,7 +82,7 @@
             #binding-cells = <0>;
             tapping-term-ms = <300>;
             bindings = <&sk LSHFT>, <&kp CLCK>;
-            // Tap → sticky shift, Double tap → caps lock
+            // Tap RGT sticky shift, Double tap RGT caps lock
         };
 
         EALT: tap_dance_ealt {
@@ -229,7 +229,7 @@
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
                 |     Q      |     W     |     E    |     R    |         T       |       Y        |        U       |       I       |        O        |      P       |
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
-                |     A      |     S     |     D    |     F    |         G       |       H        |        J       |       K       |        L        |      ←       |
+                |     A      |     S     |     D    |     F    |         G       |       H        |        J       |       K       |        L        |      LFT       |
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
                  \    alt    |     Z     |     X    |     C    |         V       |       B        |        N       |       M       |        $        |    Enter    /
                    -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -252,21 +252,21 @@
             bindings = <
 
     /*
-     * SYM layer — replaces old ALT layer, adapted to new 4-key bottom row
+     * SYM layer - replaces old ALT layer, adapted to new 4-key bottom row
      *
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
-                |    #/~     |    1/↖   |    2/↑   |    3/↗   |       (/[       |       )/]      |      _/<       |      -/>      |        +/^      |     @/%      |
+                |    #/~     |    1/HOM   |    2/UP   |    3/PGU   |       (/[       |       )/]      |      _/<       |      -/>      |        +/^      |     @/%      |
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
-                |    */=     |    4/←   |    5/↓   |    6/→   |       \/|       |       :/;      |      &/'       |      '/"      |        "        |    DEL/←     |
+                |    */=     |    4/LFT   |    5/DN   |    6/RGT   |       \/|       |       :/;      |      &/'       |      '/"      |        "        |    DEL/LFT     |
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
-                 \   aA     |    7/↙   |    8/↓   |    9/↘   |       ?/{       |       !|}      |      ,/`       |      ./.      |        $/⎙      |    Enter    /
+                 \   aA     |    7/END   |    8/DN   |    9/PGD   |       ?/{       |       !|}      |      ,/`       |      ./.      |        $/PSCRN      |    Enter    /
                    -----------------------------------------------------------------------------------------------------------------------------------------------
                               \    CTRL      |       0        |                    SPACE                  |        DEFAULT        |         aA    /
                                 -------------------------------------------------------------------------------------------------------------------
     */
 
     &mtt TILDE HASH     &mtt HOME N1       &mtt UP N2         &mtt PG_UP N3      &mtt LBKT LPAR    &mtt RBKT RPAR     &mtt LT UNDER      &mtt GT MINUS      &mtt CARET PLUS    &mtt PERCENT AT
-    &mtt EQUAL STAR     &mtt LEFT N4       &mtt DOWN N5       &mtt RIGHT N6      &mtt BSLH SLASH   &mtt PIPE COLON    &mtt AMPERSAND SEMI     &mtt APOS APOS     &mtt DQT DQT       &mtt DEL BSPC
+    &mtt EQUAL STAR     &mtt LEFT N4       &mtt DOWN N5       &mtt RIGHT N6      &mtt BSLH SLASH   &mtt PIPE COLON    &mtt AMPS SEMI     &mtt APOS APOS     &mtt DQT DQT       &mtt DEL BSPC
     &SHFT               &mtt END N7        &mtt DOWN N8       &mtt PG_DN N9      &mtt LBRC QMARK   &mtt RBRC EXCL     &mtt GRAVE COMMA   &mtt DOT DOT       &mtt PSCRN DLLR    &kp ENTER
 
     		         &SHFT				 &hm2 EP_TOG N0	      &kp SPACE			&EALT		 &sk LCTRL
@@ -279,12 +279,12 @@
             bindings = <
 
     /*
-     * UPPER layer — navigation + special characters (new board layout)
+     * UPPER layer - navigation + special characters (new board layout)
      *
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
-                |   none     |     ↑     |   none   |   Reset  |    Ext Pwr      |      none      |        <       |       >       |        |        |      =       |
+                |   none     |     UP     |   none   |   Reset  |    Ext Pwr      |      none      |        <       |       >       |        |        |      =       |
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
-                |    ←       |     ↓     |    →     |   none   |       \         |       &        |        {       |       }       |        ^        |      ←       |
+                |    LFT       |     DN     |    RGT     |   none   |       \         |       &        |        {       |       }       |        ^        |      LFT       |
                 -----------------------------------------------------------------------------------------------------------------------------------------------------
                  \  Shift   |   none    |   none   |   none   |     BL Dec      |    RGB Toggle  |     BL Inc     |     none      |    Boot/Out     |    Enter    /
                    -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -306,7 +306,7 @@
             bindings = <
 
     /*
-     * MEDIA layer — Bluetooth device management (preserving old BT macros)
+     * MEDIA layer - Bluetooth device management (preserving old BT macros)
      */
 
     &bt0            &bt1               &bt BT_CLR         &sys_reset         &ext_power EP_TOG  &none              &none              &none              &none              &none
