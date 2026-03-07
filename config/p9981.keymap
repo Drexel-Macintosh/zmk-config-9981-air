@@ -1,4 +1,8 @@
-
+/*
+ * Copyright (c) 2023 ZitaoTech
+ * "BlueBerry" Android Layout by Drexel Macintosh    
+ * SPDX-License-Identifier: MIT
+ */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -40,7 +44,7 @@
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <400>;
+            tapping-term-ms = <300>;
             bindings = <&mkp LCLK>, <&bt BT_CLR>;
         };
 
@@ -176,8 +180,8 @@
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <400>;
-            bindings = <&kp>, <&kp>;
+            tapping-term-ms = <500>;
+            bindings = <&out>, <&kp>;
         };
 
         hm2: homerow_mods_2 {
@@ -294,7 +298,7 @@
 
     
 
-    &bt0            &bt1               &bt BT_CLR         &sys_reset         &ext_power EP_TOG  &none              &none              &none              &none              &none
+    &bt0            &bt1               &BT_CLR            &sys_reset         &ext_power EP_TOG  &none              &none              &none              &none              &none
     &bt2            &bt3               &none              &none              &none              &none              &none              &none              &none              &none
     &CON            &none              &none              &none              &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC         &none              &bootloader        &none
 
